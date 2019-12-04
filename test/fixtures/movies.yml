@@ -2,14 +2,14 @@
 
 one:
   title: MyString
-  rating: 
+  rating: MyString
   total_gross: 1
   description: MyText
-  released_on: 2019-12-04 14:05:29
+  released_on: 2019-12-04 14:36:52
 
 two:
   title: MyString
-  rating: 
+  rating: MyString
   total_gross: 1
   description: MyText
-  released_on: 2019-12-04 14:05:29
+  released_on: 2019-12-04 14:36:52
