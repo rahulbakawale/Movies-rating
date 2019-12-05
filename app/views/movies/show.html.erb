@@ -1,0 +1,17 @@
+<center style="background: pink"> <h1><strong> Movie  </strong></h1></center>
+ 
+     
+      <h2 style="background: white">
+       <strong>Title :<%= @movie.title%></strong> 
+      <span class ="pull-right"> <h4>Totle_gross :<%=number_change(@movie.total_gross)%></h4></span>
+        </h2><br><br>
+     
+      <h3>Rating :<%=@movie.rating%></h3>
+     
+     
+      <h3>Released :<%=time_date(@movie.released_on)%></h3>
+     
+
+
+     <p> <h3>Description :<%=@movie.description%></h3></p>
+      <br>
