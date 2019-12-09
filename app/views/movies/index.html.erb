@@ -13,12 +13,10 @@
 
       <h2 style="background: white">
         <strong>Title :<%= link_to movie.title, movie_path(movie.id) %></strong>
-        <span class ="pull-right">
-          <h4>Totle_gross :<%=number_change(movie.total_gross)%></h4>
-        </span>
+        
       </h2>
 
-      <h3>Rating :<%=movie.rating%></h3>
+      
       <h3>Released :<%=time_date(movie.released_on)%></h3>
       <span><h3>Available : <%= pluralize(movie.spot, 'Spot') %></h3></span>
       <h3>Description :<%=(movie.description).truncate(20)%></h3>
