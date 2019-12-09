@@ -21,12 +21,31 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "All Movies", movies_path  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
+            <li><%= link_to "Link2","/path2" %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
         </div>
       </div>
     </div>
-    <%= yield %>
+
+
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+        <div class="col-lg-3" : style="background: #283747">
+          <div class="well sidebar-nav" :: style="background:  #aed6f1 ">
+            <h3>Sidebar</h3>
+            <ul class="nav nav-list">
+              <li class="nav-header" >Sidebar</li>
+              <li><%= link_to "Create New Movie", new_movie_path   %></li>
+              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Link3", "/path3"  %></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+      </div><!--/row-->
   </body>
 </html>

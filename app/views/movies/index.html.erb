@@ -1,33 +1,32 @@
-<div style="background: #AF7AC5">
-   <% a = @movies.length %>
+<div style="background: #CACFD2">
+  <% a = @movies.length %>
+  <i><center style="background: #ABB2B9">
+  <h1><strong> Total Movies This Page : <%= a %></strong></h1></center>
 
- <center style="background: pink"> <h1><strong> Total Movies This Page : <%= a %></strong></h1></center>
-   <% @movies.each do |movie|%>
-     
+  <% @movies.each do |movie| %>
+    <div class="well">
+      <div class="movie_image">
+        <% if movie.movie_image.present? %>
+          <%= image_tag movie.movie_image %>
+        <% end %>
+      </div>
+
       <h2 style="background: white">
-                   
-       
- 
+        <strong>Title :<%= link_to movie.title, movie_path(movie.id) %></strong>
+        <span class ="pull-right">
+          <h4>Totle_gross :<%=number_change(movie.total_gross)%></h4>
+        </span>
+      </h2>
 
-
-       <strong>Title :<%= link_to movie.title, movie_path(movie.id) %></strong>
-
-
-
-
-
-      <span class ="pull-right"> <h4>Totle_gross :<%=number_change(movie.total_gross)%></h4></span>
-        </h2><br><br>
-     
       <h3>Rating :<%=movie.rating%></h3>
-     
-     
       <h3>Released :<%=time_date(movie.released_on)%></h3>
-     
-
-
-     <p> <h3>Description :<%=(movie.description).truncate(50)%></h3></p>
-      <br>
-   <%end%>
+      <span><h3>Available : <%= pluralize(movie.spot, 'Spot') %></h3></span>
+      <h3>Description :<%=(movie.description).truncate(20)%></h3>
+  
+      <span class ="pull-right">
+        <%= link_to 'Edit' , movie_edit_path(movie) , class: 'btn btn-primary' %>
+        <%= link_to 'Delete' , destroy_movie_path(movie), method: :delete , class: 'btn btn-danger'%>
+      </span><br><br><br>
+    </div>
+  <% end %>
 </div>
-
