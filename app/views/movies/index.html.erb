@@ -2,7 +2,6 @@
   <% a = @movies.length %>
   <i><center style="background: #ABB2B9">
   <h1><strong> Total Movies This Page : <%= a %></strong></h1></center>
-
   <% @movies.each do |movie| %>
     <div class="well">
       <div class="movie_image">
@@ -13,7 +12,6 @@
 
       <h2 style="background: white">
         <strong>Title :<%= link_to movie.title, movie_path(movie.id) %></strong>
-        
       </h2>
 
       
