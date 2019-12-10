@@ -18,10 +18,12 @@
         </span>
       </h2>
 
-      <h3>Rating :<%=movie.rating%></h3>
-      <h3>Released :<%=time_date(movie.released_on)%></h3>
-      <span><h3>Available : <%= pluralize(movie.spot, 'Spot') %></h3></span>
-      <h3>Description :<%=(movie.description).truncate(20)%></h3>
+      <h4>Rating :<%=movie.rating%></h4>
+      <h4>Released :<%=time_date(movie.released_on)%></h4>
+    <span><h4>Releasing Available : <%= pluralize(movie.spot, 'Spot') %></h4></span>
+       <%#link_to movie.(pluralize(movie.spot, 'Spot')),movie_path(movie.id)%>
+
+      <h4>Description :<%=(movie.description).truncate(20)%></h4>
   
       <span class ="pull-right">
         <%= link_to 'Edit' , movie_edit_path(movie) , class: 'btn btn-primary' %>
