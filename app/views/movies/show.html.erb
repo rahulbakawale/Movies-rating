@@ -2,18 +2,22 @@
  
      
       <h2 style="background: white">
+          <%= image_tag @movie.movie_image %>
        <strong>Title :<%= @movie.title%></strong> 
       <span class ="pull-right"> <h4>Totle_gross :<%=number_change(@movie.total_gross)%></h4></span>
         </h2><br><br>
      
-      <h3>Rating :<%=@movie.rating%></h3>
+      <h4>Rating :<%=@movie.rating%></h4>
      
      
-      <h3>Released :<%=time_date(@movie.released_on)%></h3>
+      <h4>Released :<%=time_date(@movie.released_on)%></h4>
      
 
 
-     <p> <h3>Description :<%=@movie.description%></h3></p>
+     <p> <h4>Description :<%=@movie.description%></h4></p>
+      <h4>Cast :<%=@movie.cast%></h4>
+      <h4>Director :<%=@movie.director%></h4>
+      <h4>Duration :<%=@movie.duration%></h4>
       <br>
 
     <%= link_to 'Edit' , movie_edit_path(@movie) , class: 'btn btn-default' %>

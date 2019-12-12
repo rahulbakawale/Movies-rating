@@ -6,9 +6,12 @@
   <% @movies.each do |movie| %>
     <div class="well">
       <div class="movie_image">
-        <% if movie.movie_image.present? %>
+        <%# if movie.movie_image.present? %>
           <%= image_tag movie.movie_image %>
-        <% end %>
+          <span class ="pull-right">Description<marquee width="250%" direction="left" scrollamount="10" height="100px">
+           <h3> <%= movie.description%></h3>
+         </marquee> </span>
+        <% #end %>
       </div>
 
       <h2 style="background: white">
@@ -23,7 +26,11 @@
     <span><h4>Releasing Available : <%= pluralize(movie.spot, 'Spot') %></h4></span>
        <%#link_to movie.(pluralize(movie.spot, 'Spot')),movie_path(movie.id)%>
 
-      <h4>Description :<%=(movie.description).truncate(20)%></h4>
+      <h4>Description :<%=movie.description.truncate(20)%></h4>
+
+      <h4>Cast :<%=movie.cast%></h4>
+      <h4>Director :<%=movie.director%></h4>
+      <h4>Duration :<%=movie.duration%></h4>
   
       <span class ="pull-right">
         <%= link_to 'Edit' , movie_edit_path(movie) , class: 'btn btn-primary' %>

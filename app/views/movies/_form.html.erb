@@ -1,4 +1,16 @@
  <%= form_with(model: @movie, local: true) do |f| %>
+ 
+  <% if @movie.errors.any?%>
+   <div class="errors">
+    <h5><%= @movie.errors.count%></h5>
+    <ul>
+      <% @movie.errors.full_messages.each do |msg|%>
+        <li><%= msg%></li>
+      <%end%>
+    </ul>
+   </div>
+  <%end%>
+
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, autofocus: true, class: "form-control" %>
@@ -8,6 +20,8 @@
  <div class="form-group">
     <%= f.label :rating %>
     <%= f.text_field :rating, autofocus: true, class: "form-control" %>
+    
+    <%= f.select :rating, Movie::RATINGS, prompt: "pick one" %>
   </div>
  
  <div class="form-group">
@@ -37,6 +51,24 @@
     <%= f.number_field :spot, { class: "form-control" } %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :cast %>
+    <%= f.text_field :cast, autofocus: true, class: "form-control" %>
+  </div>
 
-  <button type="submit" class="btn btn-primary"> Submit</button>
+  <div class="form-group">
+    <%= f.label :director %>
+    <%= f.text_field :director, autofocus: true, class: "form-control" %>
+  </div>
+
+
+
+  <div class="form-group">
+    <%= f.label :duration %>
+    <%= f.text_field :duration, autofocus: true, class: "form-control" %>
+  </div>
+
+   <button type="submit" class="btn btn-primary"> Submit</button>
+
 <%end%>
+ 

@@ -12,8 +12,12 @@ class MoviesController < ApplicationController
     end
    
   def update
-    @movie.update(movie_params)
-    redirect_to movie_path(@movie)
+    if @movie.update(movie_params)
+    redirect_to movie_path(@movie), notice: 'Movie has successfully updated!'
+  else
+     flash.now[:errors]="Some Errors !"
+     render :edit
+   end
   end
 
 
@@ -23,14 +27,17 @@ class MoviesController < ApplicationController
 
  def create
     @movie=Movie.new(movie_params)
-    @movie.save
-    redirect_to movie_path(@movie)
+    if @movie.save
+       redirect_to movie_path(@movie), notice: 'Movie has successfully create'
+    else
+       render :new
+    end    
   end
 
 
   def destroy
    @movie.destroy
-   redirect_to movies_path
+   redirect_to movies_path,notice: 'Movie has successfully delete!'
   end
 
   private
@@ -40,6 +47,6 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-     params.require(:movie).permit(:title,:rating,:total_gross,:description,:released_on,:movie_image,:spot)
+     params.require(:movie).permit(:title,:rating,:total_gross,:description,:released_on,:movie_image,:spot, :cast, :director, :duration)
   end
 end
