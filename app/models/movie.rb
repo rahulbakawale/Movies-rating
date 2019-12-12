@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+
    validates :title, :released_on, :duration, presence: true
    
    validates :description , length: { minimum: 25 }
@@ -10,6 +11,14 @@ class Movie < ApplicationRecord
   
     #RATINGS = {1=>'G', 2=>'PG' ,3=>'PG-13',4=>'R',5=>'NC-17'}
    RATINGS = %w(G PG PG-13 R NC-17)
+
+  def self.upcoming
+   where("released_on >= ? OR released_on IS NULL",Time.now).order('released_on')
+  end
+
+  def self.past
+    where("released_on < ?",Time.now).order('released_on DESC')
+   end 
 
 end
 

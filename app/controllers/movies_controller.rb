@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :find_movie,only: [:show,:edit,:update,:destroy]
   
   def index
-    @movies=Movie.all
+    @movies=Movie.upcoming
   end
 
    def show
