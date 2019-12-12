@@ -30,6 +30,7 @@ class MoviesController < ApplicationController
     if @movie.save
        redirect_to movie_path(@movie), notice: 'Movie has successfully create'
     else
+      flash.now[:errors]="Some Errors !"
        render :new
     end    
   end
