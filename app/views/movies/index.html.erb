@@ -24,8 +24,9 @@
 
   
       <span class ="pull-right">
-        <%= link_to 'Edit' , movie_edit_path(movie) , class: 'btn btn-primary' %>
-        <%= link_to 'Delete' , destroy_movie_path(movie), method: :delete , class: 'btn btn-danger'%>
+        <%= link_to 'Edit' , edit_movie_path(movie) , class: 'btn btn-primary' %>
+        <%= link_to 'Delete' , movie_path(movie), method: :delete , class: 'btn btn-danger'%>
+         <%= link_to 'reviews ' ,  movie_reviews_path(movie), class: 'btn btn-primary '%>
       </span><br><br><br>
     </div>
   <% end %>
