@@ -16,17 +16,20 @@
     <%= f.text_field :title, autofocus: true, class: "form-control" %>
   </div>
 
+   <div class="form-group">
+   <%= f.label :total_gross %>
+    <%= f.number_field :total_gross, { class: "form-control" } %>
+  </div>
  
+
+
  <div class="form-group">
     <%= f.label :rating %>
     <%= f.text_field :rating, autofocus: true, class: "form-control" %>
     <%= f.select :rating, Movie::RATINGS, prompt: "pick one" %>
   </div>
  
- <div class="form-group">
-  
-  </div>
- 
+
 
  <div class="form-group">
     <%= f.label :description %>

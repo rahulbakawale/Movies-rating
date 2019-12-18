@@ -1,3 +1,4 @@
+
 <div style="background: #CACFD2">
   <% a = @movies.length %>
   <i><center style="background: #ABB2B9">
@@ -5,12 +6,14 @@
   <% @movies.each do |movie| %>
     <div class="well">
       <div class="movie_image">
-        <%# if movie.movie_image.present? %>
+        <% if movie.movie_image.present? %>
           <%= image_tag movie.movie_image %>
-          <span class ="pull-right">Description<marquee width="250%" direction="left" scrollamount="8" height="100px">
+          <span class="pull-right"><h4>Totle_gross :<%=number_change(movie.total_gross)%></h4></span>
+           <span class ="pull-right"> 
+            Description<marquee width="100%" direction="left" scrollamount="8" height="50px">
            <h3> <%= movie.description%></h3>
          </marquee> </span>
-        <% #end %>
+        <% end %>
       </div>
 
       <h2 style="background: white">
@@ -26,7 +29,10 @@
       <span class ="pull-right">
         <%= link_to 'Edit' , edit_movie_path(movie) , class: 'btn btn-primary' %>
         <%= link_to 'Delete' , movie_path(movie), method: :delete , class: 'btn btn-danger'%>
-         <%= link_to 'reviews ' ,  movie_reviews_path(movie), class: 'btn btn-primary '%>
+         <%= link_to 'All Reviews ' ,  movie_reviews_path(movie), class: 'btn btn-primary '%>
+           <%= link_to 'White Reviews' ,  new_movie_review_path(movie), class: 'btn btn-danger '%>
+
+
       </span><br><br><br>
     </div>
   <% end %>
