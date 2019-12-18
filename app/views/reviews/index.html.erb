@@ -1,14 +1,20 @@
-<h1>Reviews <%= @movie.title%></h1>
+<center><h1>Reviews <%= @movie.title%></h1></center>
+  <i><h4> Total Reviews Movies :<%= @reviews.length %></h4></i><br>
 <% @reviews.each do |r|%>
- <%= r.name%>
- <%= r.stars%>
- <%= r.comment%>
+ <h4>Name : <%= r.name%></h4>
+ <h4>Stars : <%= r.stars%></h4>
+<h4>Comment: <%= r.comment%></h4><br><br>
+
 <%end%>
 
 
+ <%= link_to 'Reviews To Movie' ,  new_movie_review_path(@movie), class: 'btn btn-primary '%>
 
 
 
 
+
+
+ 
 
 
