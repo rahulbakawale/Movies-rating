@@ -2,7 +2,7 @@
   <i><h4> Total Reviews Movies :<%= @reviews.length %></h4></i><br>
 <% @reviews.each do |r|%>
  <h4>Name : <%= r.name%></h4>
- <h4>Stars : <%= r.stars%></h4>
+ <h4>Stars :<%= render "stars", precent: r.stars_as_parcent %></h4>
 <h4>Comment: <%= r.comment%></h4><br><br>
 
 <%end%>
