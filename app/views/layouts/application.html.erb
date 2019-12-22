@@ -20,6 +20,7 @@
         <a class="navbar-brand" href="/">Home</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
+             <ul class="pull-right"> <%= link_to 'Sing Up' , new_user_path(), class: 'btn btn-primary'%></ul>
             <li><%= link_to "All Movies", movies_path  %></li>
             <li><%= link_to "Link2","/path2" %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
