@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  resources :users
    #get '/movies' => 'movies#index'
    #get '/movies/new'  => 'movies#new', as: 'new_movie'
    #get '/movies/:id' => 'movies#show', as: 'movie'
