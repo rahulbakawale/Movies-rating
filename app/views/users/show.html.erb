@@ -1,0 +1,45 @@
+ <%= @user.name%><br>
+ <%= @user.email%><br><br>
+    <h1>Reviews</h1>
+   
+  <% if @reviews.present? %>
+    <% @reviews.each do |r|%>
+  <div class="well">
+      <div class="image">
+        <%= image_tag r.movie.movie_image %>
+          <div class="pull-right">
+           <h4><%= link_to r.movie.title, r.movie %></h4>
+            <%= time_date(r.created_at) %>
+           </div><br><br>
+          <h4>Stars :<%#= render "stars", precent: r.movie.stars_as_parcent %></h4>
+         <h4>Comment: <%= r.comment%></h4>
+       </div>
+    </div>
+ <%end%>
+<%end%>
+
+
+<h1>  Likes  </h1>
+<% if @likes.present? %>
+   <% @likes.each do |l|%>
+  <div class="well">
+      <div class="image">
+        <%= image_tag l.movie.movie_image %>
+          <div class="pull-right">
+           <h4><%= link_to l.movie.title, l.movie %></h4>
+            <%= time_date(l.created_at) %>
+           </div><br><br>
+       </div>
+    </div>
+ <%end%>
+<%end%>
+
+ <% if current_user%>
+  <%= link_to 'edit',edit_user_path(@user) ,class: "btn btn-primary" %>
+  <%= link_to 'delete', user_path(@user),method: :delete , class: 'btn btn-danger' %>
+   <%end%>
+
+ 
+
+
+ 

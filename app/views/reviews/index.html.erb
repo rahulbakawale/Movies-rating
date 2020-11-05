@@ -1,14 +1,14 @@
-<center><h1>Reviews <%= @movie.title%></h1></center>
-  <i><h4> Total Reviews Movies :<%= @reviews.length %></h4></i><br>
-<% @reviews.each do |r|%>
- <h4>Name : <%= r.name%></h4>
- <h4>Stars :<%= render "stars", precent: r.stars_as_parcent %></h4>
-<h4>Comment: <%= r.comment%></h4><br><br>
+    <center><h1>Reviews <%= @movie.title%></h1></center>
+    <i><h4> Total Reviews Movies :<%= @reviews.length %></h4></i><br>
+    <% @reviews.each do |r|%>
 
-<%end%>
+    <h4>Stars :<%= render "stars", precent: r.stars_as_parcent %></h4>
+    <h4>Comment: <%= r.comment%></h4><br><br>
+
+    <%end%>
 
 
- <%= link_to 'Reviews To Movie' ,  new_movie_review_path(@movie), class: 'btn btn-primary '%>
+    <%= link_to 'Reviews To Movie' ,  new_movie_review_path(@movie), class: 'btn btn-primary '%>
 
 
 

@@ -5,3 +5,14 @@
 .front-stars {
   color: yellow;
 }
+
+
+.image {
+  width: fit-content;
+  display: inline;
+  
+  img{
+    width: 80px;
+    padding-right: 10px; 
+  }
+}

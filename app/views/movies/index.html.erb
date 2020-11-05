@@ -2,36 +2,45 @@
 <div style="background: #CACFD2">
   <% a = @movies.length %>
   <i><center style="background: #ABB2B9">
-  <h1><strong> Total Movies This Page : <%= a %></strong></h1></center>
-  <% @movies.each do |movie| %>
+    <h1><strong> Total Movies This Page : <%= a %></strong></h1></center>
+    <% @movies.each do |movie| %>
     <div class="well">
       <div class="movie_image">
         <% if movie.movie_image.present? %>
-          <%= image_tag movie.movie_image %>
-          <span class="pull-right"><h4>Totle_gross :<%=number_change(movie.total_gross)%></h4></span>
-           <span class ="pull-right"> 
-            Description<marquee width="100%" direction="left" scrollamount="8" height="50px">
+        <%= image_tag movie.movie_image %>
+        <span class="pull-right"><h4>Totle_gross :<%=number_change(movie.total_gross)%></h4></span>
+        <span class ="pull-right"> 
+          Description<marquee width="100%" direction="left" scrollamount="8" height="50px">
            <h3> <%= movie.description%></h3>
          </marquee> </span>
-        <% end %>
-      </div>
+         <% end %>
+       </div>
 
-      <h2 style="background: white">
-        <strong>Title :<%= link_to movie.title, movie_path(movie.id) %></strong>
+       <h2 style="background: white">
+        <strong>Title :<%= link_to movie.title, movie_path(movie) %></strong>
       </h2>
 
       <h3>Rating :<%=movie.rating%></h3>
       <h3>Released :<%=time_date(movie.released_on)%></h3>
+      <h3>Description:</h3><%= truncate(movie.description, length: 50, separator: ' ') %>
       <span><h3>Available : <%= pluralize(movie.spot, 'Spot') %></h3></span>
-      <h3>Description :<%=(movie.description).truncate(20)%></h3>
-
-  
+      <span class="pull-right"> <h4><%= movie.likes.count %></h4></span>     
+      
+      
       <span class ="pull-right">
+
+        <%if current_user_admin?(current_user) && movie.admin_id==current_user.id%>
         <%= link_to 'Edit' , edit_movie_path(movie) , class: 'btn btn-primary' %>
         <%= link_to 'Delete' , movie_path(movie), method: :delete , class: 'btn btn-danger'%>
-         <%= link_to 'All Reviews ' ,  movie_reviews_path(movie), class: 'btn btn-primary '%>
-           <%= link_to 'White Reviews' ,  new_movie_review_path(movie), class: 'btn btn-danger '%>
-          </span><br><br><br>
+        <%end%>
+        <%= link_to "Who's Reviews " ,  movie_reviews_path(movie), class: 'btn btn-primary '%>
+        <%= link_to 'Write Reviews' ,  new_movie_review_path(movie), class: 'btn btn-danger '%>
+        
+        <%= more_like?(movie) if current_user%>
+       
+       
+        
+      </span><br><br><br>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>

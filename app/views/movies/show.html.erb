@@ -19,6 +19,31 @@
       <h4>Director :<%=@movie.director%></h4>
       <h4>Duration :<%=@movie.duration%></h4>
       <br>
+  
+      <div class="movie-liker">
+       <h3>Likers</h3>
+       <% if @users.present? %>
+       <% @users.each do |user|%>
+       <ul><li> <h5><%= link_to user.name, user  %></h5></li> </ul>
+       <% end%>
+       <% end%> 
+     </div>
 
+     
+     <div class="categories">
+    <%# binding.pry%>
+    <% if @categories.present? %>
+    <h1>categories</h1>
+    <ul>
+      <% @categories.each do |category| %>
+        <li><%= category.name %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+
+   <%if current_user_admin?(current_user) && @movie.admin_id==current_user.id%>
     <%= link_to 'Edit' ,  edit_movie_path(@movie) , class: 'btn btn-default' %>
+     <%end%>
      <%= link_to 'reviews ' ,  movie_reviews_path(@movie), class: 'btn btn-primary '%>

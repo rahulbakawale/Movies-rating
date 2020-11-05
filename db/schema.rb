@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_045209) do
+ActiveRecord::Schema.define(version: 2020_01_16_135257) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_likes_on_movie_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -25,15 +40,26 @@ ActiveRecord::Schema.define(version: 2019_12_22_045209) do
     t.string "cast"
     t.string "director"
     t.string "duration"
+    t.integer "admin_id"
+    t.string "slug"
+  end
+
+  create_table "movies_categores", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_movies_categores_on_category_id"
+    t.index ["movie_id"], name: "index_movies_categores_on_movie_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "name"
     t.integer "stars"
     t.text "comment"
     t.integer "movie_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["movie_id"], name: "index_reviews_on_movie_id"
   end
 
@@ -43,7 +69,14 @@ ActiveRecord::Schema.define(version: 2019_12_22_045209) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_admin", default: false
+    t.string "slug"
   end
+  
 
+  add_foreign_key "likes", "movies"
+  add_foreign_key "likes", "users"
+  add_foreign_key "movies_categores", "categories"
+  add_foreign_key "movies_categores", "movies"
   add_foreign_key "reviews", "movies"
 end
